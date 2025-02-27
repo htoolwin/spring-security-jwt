@@ -23,16 +23,17 @@ services:
       - ME_CONFIG_BASICAUTH_USERNAME=admin  # Optional: Add web UI authentication
       - ME_CONFIG_BASICAUTH_PASSWORD=admin  # Optional: Add web UI authentication
       - ME_CONFIG_MONGODB_SERVER=mongodb
-  # spring-security-jwt:
-  #   image: spring-security-jwt:latest # Replace this with the actual image name if you are building the image separately
-  #   container_name: spring-security-jwt
-  #   build:
-  #     context: ./ # Path to the FMS backend project
-  #     dockerfile: Dockerfile # Ensure you have a Dockerfile for the Spring Boot app
-  #   ports:
-  #     - 8080:8080
-  #   environment:
-  #     - SPRING_DATA_MONGODB_URI=mongodb://rootuser:rootpass@mongodb:27017/?authSource=admin
+      
+  spring-security-jwt:
+    image: spring-security-jwt:latest # Replace this with the actual image name if you are building the image separately
+    container_name: spring-security-jwt
+    build:
+      context: ./ # Path to the FMS backend project
+      dockerfile: Dockerfile # Ensure you have a Dockerfile for the Spring Boot app
+    ports:
+      - 8080:8080
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://rootuser:rootpass@mongodb:27017/?authSource=admin
 volumes:
   data: {}
 networks:
